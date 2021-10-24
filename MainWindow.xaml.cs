@@ -126,22 +126,21 @@ namespace Catinas_Andrei_Lab2
                     mRaisedGlazed++;
                     txtGlazedRaised.Text = mRaisedGlazed.ToString();
                     break;
-
                 case DoughnutType.Sugar:
                     mRaisedSugar++;
                     txtSugarRaised.Text = mRaisedSugar.ToString();
                     break;
                 case DoughnutType.Lemon:
                     mFilledLemon++;
-                    txtLemonFilled.Text = mFilledLemon.ToString();
+                    txtLemonFilled.Text = mFilledLemon.ToString(); 
                     break;
                 case DoughnutType.Chocolate:
                     mFilledChocolate++;
-                    txtChocolateFilled.Text = mFilledChocolate.ToString();
+                    txtChocolateFilled.Text = mFilledChocolate.ToString(); 
                     break;
                 case DoughnutType.Vanilla:
                     mFilledVanilla++;
-                    txtVanillaFilled.Text = mFilledVanilla.ToString();
+                    txtVanillaFilled.Text = mFilledVanilla.ToString(); 
                     break;
             }
         }
@@ -150,8 +149,7 @@ namespace Catinas_Andrei_Lab2
         {
             if (!(e.Key >= Key.D0 && e.Key <= Key.D9))
             {
-                MessageBox.Show("Numai cifre se pot introduce!", "Input Error", MessageBoxButton.OK,
-               MessageBoxImage.Error);
+                MessageBox.Show("Numai cifre se pot introduce!", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -216,8 +214,7 @@ namespace Catinas_Andrei_Lab2
             if (ValidateQuantity(selectedDoughnut) > 0)
             {
                 lstSale.Items.Add(txtQuantity.Text + " " + selectedDoughnut.ToString() +
-               ":" + txtPrice.Text + " " + double.Parse(txtQuantity.Text) *
-               double.Parse(txtPrice.Text));
+               ":" + txtPrice.Text + " " + double.Parse(txtQuantity.Text) * double.Parse(txtPrice.Text));
             }
             else
             {
@@ -236,20 +233,35 @@ namespace Catinas_Andrei_Lab2
            * double.Parse(txtPrice.Text)).ToString();
             foreach (string s in lstSale.Items)
             {
-                switch (s.Substring(s.IndexOf(" ") + 1, s.IndexOf(":") - s.IndexOf(" ") -
-               1))
+                switch (s.Substring(s.IndexOf(" ") + 1, s.IndexOf(":") - s.IndexOf(" ") - 1))
                 {
                     case "Glazed":
                         mRaisedGlazed = mRaisedGlazed - Int32.Parse(s.Substring(0,
-                       s.IndexOf(" ")));
+                        s.IndexOf(" ")));
                         txtGlazedRaised.Text = mRaisedGlazed.ToString();
                         break;
                     case "Sugar":
                         mRaisedSugar = mRaisedSugar - Int32.Parse(s.Substring(0,
-                       s.IndexOf(" ")));
+                        s.IndexOf(" ")));
                         txtSugarRaised.Text = mRaisedSugar.ToString();
                         break;
+                    case "Chocolate":
+                        mFilledChocolate = mFilledChocolate - Int32.Parse(s.Substring(0,
+                        s.IndexOf(" ")));
+                        txtChocolateFilled.Text = mFilledChocolate.ToString();
+                        break;
+                    case "Lemon":
+                        mFilledLemon = mFilledLemon - Int32.Parse(s.Substring(0,
+                        s.IndexOf(" ")));
+                        txtLemonFilled.Text = mFilledLemon.ToString();
+                        break;
+                    case "Vanilla":
+                        mFilledVanilla = mFilledVanilla - Int32.Parse(s.Substring(0,
+                        s.IndexOf(" ")));
+                        txtVanillaFilled.Text = mFilledVanilla.ToString();
+                        break;
                 }
+                
             }
         }
     }
